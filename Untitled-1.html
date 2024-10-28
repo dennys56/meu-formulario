@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Completo</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #434343); /* Gradiente de preto a cinza escuro */
+            color: white; /* Texto em branco para contraste com o fundo */
+            font-family: Arial, sans-serif; /* Fonte padrão */
+        }
+
+        .meufundo {
+            background-color: rgba(50, 50, 50, 0.9); /* Fundo cinza escuro com leve transparência */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+        }
+
+        .box legend {
+            text-align: center;
+            display: block;
+            font-size: 50px;
+            font-weight: bold;
+            color: yellow; /* Título em amarelo */
+            margin-bottom: 20px;
+        }
+
+        .inputBox {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .inputBox label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white; /* Rótulos em branco */
+        }
+
+        .inputBox input, .inputBox select, .inputBox textarea {
+            width: 200px;
+            padding: 8px;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto 15px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            color: black; /* Texto nos campos em preto */
+        }
+
+        /* Remove borda vermelha quando o campo está inválido */
+        .inputBox input:invalid, .inputBox select:invalid, .inputBox textarea:invalid {
+            box-shadow: none;
+        }
+
+        /* Estilo do botão de enviar */
+        .inputBox input[type="submit"] {
+            background-color: yellow; /* Botão amarelo */
+            color: black; /* Texto do botão em preto */
+            border: none; /* Remove a borda padrão */
+            border-radius: 10px; /* Bordas arredondadas no botão */
+            padding: 10px 20px; /* Espaçamento interno */
+            font-size: 16px; /* Tamanho da fonte */
+            cursor: pointer; /* Muda o cursor ao passar o mouse */
+        }
+
+        /* Efeito ao passar o mouse no botão */
+        .inputBox input[type="submit"]:hover {
+            background-color: #ffd700; /* Amarelo mais claro ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="box meufundo">
+        <form action="">
+            <fieldset>
+                <legend>Formulario Completo</legend>
+
+                <!-- Nome -->
+                <div class="inputBox">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+
+                <!-- E-mail -->
+                <div class="inputBox">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <!-- Telefone -->
+                <div class="inputBox">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone" required>
+                </div>
+
+                <!-- Data de Nascimento -->
+                <div class="inputBox">
+                    <label for="nascimento">Data de Nascimento</label>
+                    <input type="date" name="nascimento" id="nascimento" required>
+                </div>
+
+                <!-- Gênero -->
+                <div class="inputBox">
+                    <label for="genero">Gênero</label>
+                    <select name="genero" id="genero" required>
+                        <option value="">Selecione</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <!-- Endereço -->
+                <div class="inputBox">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" name="endereco" id="endereco" required>
+                </div>
+
+                <!-- Comentários -->
+                <div class="inputBox">
+                    <label for="comentarios">Comentários</label>
+                    <textarea name="comentarios" id="comentarios" rows="4" required></textarea>
+                </div>
+
+                <!-- Botão de Enviar -->
+                <div class="inputBox">
+                    <input type="submit" value="Enviar">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
+
