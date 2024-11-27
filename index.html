@@ -3,138 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Completo</title>
-    <style>
-        body {
-            background: linear-gradient(to bottom, #000000, #434343); /* Gradiente de preto a cinza escuro */
-            color: white; /* Texto em branco para contraste com o fundo */
-            font-family: Arial, sans-serif; /* Fonte padrão */
-        }
-
-        .meufundo {
-            background-color: rgba(50, 50, 50, 0.9); /* Fundo cinza escuro com leve transparência */
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px; /* Bordas arredondadas */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
-        }
-
-        .box legend {
-            text-align: center;
-            display: block;
-            font-size: 50px;
-            font-weight: bold;
-            color: yellow; /* Título em amarelo */
-            margin-bottom: 20px;
-        }
-
-        .inputBox {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .inputBox label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            color: white; /* Rótulos em branco */
-        }
-
-        .inputBox input, .inputBox select, .inputBox textarea {
-            width: 200px;
-            padding: 8px;
-            font-size: 16px;
-            display: block;
-            margin: 0 auto 15px auto;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            outline: none;
-            color: black; /* Texto nos campos em preto */
-        }
-
-        /* Remove borda vermelha quando o campo está inválido */
-        .inputBox input:invalid, .inputBox select:invalid, .inputBox textarea:invalid {
-            box-shadow: none;
-        }
-
-        /* Estilo do botão de enviar */
-        .inputBox input[type="submit"] {
-            background-color: yellow; /* Botão amarelo */
-            color: black; /* Texto do botão em preto */
-            border: none; /* Remove a borda padrão */
-            border-radius: 10px; /* Bordas arredondadas no botão */
-            padding: 10px 20px; /* Espaçamento interno */
-            font-size: 16px; /* Tamanho da fonte */
-            cursor: pointer; /* Muda o cursor ao passar o mouse */
-        }
-
-        /* Efeito ao passar o mouse no botão */
-        .inputBox input[type="submit"]:hover {
-            background-color: #ffd700; /* Amarelo mais claro ao passar o mouse */
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora de Notas</title>
 </head>
 <body>
-    <div class="box meufundo">
-        <form action="">
-            <fieldset>
-                <legend>Formulario Completo</legend>
+    <h1>Calculadora de Notas</h1>
+    <button id="btnadc">+1</button>
+    <button id="btn2">-1</button>
+    <button id="btnDecimal">Adicionar 0.1</button>
+    <span id="contador">0</span>
+    <button id="enviar">Enviar</button>
+    <button id="excluir">Excluir</button>
+    <button id="mostrar" style="display:none;">Mostrar</button>
+    <button id="somarTudo">Somar Tudo</button>
+    <div id="resultado"></div>
+    <div id="historico"></div>
+    <h4>desenvolvedor:dennys</h4>
+    <style>* {
+    background-color: darkgrey;
+}
 
-                <!-- Nome -->
-                <div class="inputBox">
-                    <label for="nome">Nome completo</label>
-                    <input type="text" name="nome" id="nome" required>
-                </div>
+#btnadc {
+    background-color: rgb(5, 175, 5);
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-                <!-- E-mail -->
-                <div class="inputBox">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" required>
-                </div>
+#btn2 {
+    background-color: rgb(5, 175, 5);
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-                <!-- Telefone -->
-                <div class="inputBox">
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" id="telefone" required>
-                </div>
+#enviar {
+    background-color: rgb(5, 175, 5);
+    border-radius: 5px;
+    display: block;
+    cursor: pointer;
+    transition: 0.6s ease;
+}
 
-                <!-- Data de Nascimento -->
-                <div class="inputBox">
-                    <label for="nascimento">Data de Nascimento</label>
-                    <input type="date" name="nascimento" id="nascimento" required>
-                </div>
+#btnadc:hover, #btn2:hover, #enviar:hover {
+    background-color: greenyellow;
+    color: black;
+}
 
-                <!-- Gênero -->
-                <div class="inputBox">
-                    <label for="genero">Gênero</label>
-                    <select name="genero" id="genero" required>
-                        <option value="">Selecione</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outro">Outro</option>
-                    </select>
-                </div>
+#btnadc, #btn2 {
+    margin-right: 50px;
+}
+</style>
+    <script src="script.js">const btnadc = document.getElementById('btnadc');
+const btn2 = document.getElementById('btn2');
+const btnDecimal = document.getElementById('btnDecimal');
+const contador = document.getElementById('contador');
+const enviar = document.getElementById('enviar');
+const excluir = document.getElementById('excluir');
+const mostrar = document.getElementById('mostrar');
+const somarTudo = document.getElementById('somarTudo');
+const resultado = document.getElementById('resultado');
+const historico = document.getElementById('historico');
 
-                <!-- Endereço -->
-                <div class="inputBox">
-                    <label for="endereco">Endereço</label>
-                    <input type="text" name="endereco" id="endereco" required>
-                </div>
+let valor = 0;
+let medias = [];
 
-                <!-- Comentários -->
-                <div class="inputBox">
-                    <label for="comentarios">Comentários</label>
-                    <textarea name="comentarios" id="comentarios" rows="4" required></textarea>
-                </div>
+btnadc.addEventListener('click', () => {
+    valor++;
+    contador.textContent = valor;
+});
 
-                <!-- Botão de Enviar -->
-                <div class="inputBox">
-                    <input type="submit" value="Enviar">
-                </div>
-            </fieldset>
-        </form>
-    </div>
+btn2.addEventListener('click', () => {
+    valor--;
+    contador.textContent = valor;
+});
+
+btnDecimal.addEventListener('click', () => {
+    valor = parseFloat((valor + 0.1).toFixed(1));
+    contador.textContent = valor;
+});
+
+enviar.addEventListener('click', () => {
+    const nota = valor.toFixed(1);
+    contador.textContent = nota;
+
+    if (valor >= 6) {
+        resultado.textContent = `Aprovado! Sua média é: ${nota}`;
+    } else {
+        resultado.textContent = `Reprovado! Sua média é: ${nota}`;
+    }
+
+    medias.push(valor);
+    atualizarHistorico();
+    mostrar.style.display = 'block';
+});
+
+excluir.addEventListener('click', () => {
+    medias.pop();
+    atualizarHistorico();
+    resultado.textContent = '';
+    contador.textContent = 0;
+});
+
+somarTudo.addEventListener('click', () => {
+    const somaTotal = medias.reduce((acc, media) => acc + media, 0);
+    if (somaTotal > 36) {
+        resultado.textContent = `Parabéns Voce Passou de ano! Soma total: ${somaTotal.toFixed(1)}`;
+    } else {
+        resultado.textContent = `Infelizmente voce não conseguiu tente na próxima! Soma total: ${somaTotal.toFixed(1)}`;
+    }
+});
+
+mostrar.addEventListener('click', () => {
+    alert(`Nota final: ${contador.textContent}. Resultado: ${resultado.textContent}`);
+});
+
+function atualizarHistorico() {
+    historico.innerHTML = '';
+    medias.forEach((media, index) => {
+        const mediaElement = document.createElement('div');
+        mediaElement.textContent = `Média ${index + 1}: ${media.toFixed(1)}`;
+        historico.appendChild(mediaElement);
+    });
+}
+</script>
 </body>
 </html>
-
